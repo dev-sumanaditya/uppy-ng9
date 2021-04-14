@@ -11,4 +11,8 @@ export class AppComponent {
   public completed(e) {
     console.log({e});
   }
+
+  public onError(e) {
+    console.log({e});
+  }
 }

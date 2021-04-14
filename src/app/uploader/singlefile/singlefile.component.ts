@@ -17,7 +17,8 @@ export class SinglefileComponent implements OnInit {
   @Input() numberOfFiles: number;
   @Input() maxFileSize: number;
 
-  @Output() completed = new EventEmitter<any>();
+  @Output() onCompleted = new EventEmitter<any>();
+  @Output() onError = new EventEmitter<any>();
 
   constructor() {}
 
@@ -111,8 +112,12 @@ export class SinglefileComponent implements OnInit {
     // }
 
     this.uppy.on('complete', (result) => {
-      this.completed.emit(result);
+      this.onCompleted.emit(result);
     });
+
+    this.uppy.on('error', (error) => {
+      this.onError.emit(error);
+    })
 
   }
 }
