@@ -13,8 +13,9 @@ import * as Tus from '@uppy/tus';
 export class SinglefileComponent implements OnInit {
 
   @Input() EndPoint: string;
-
   @Input() FileType: string[]; // [ video/* , image/*, ]
+  @Input() numberOfFiles: number;
+  @Input() maxFileSize: number;
 
   @Output() completed = new EventEmitter<any>();
 
@@ -34,7 +35,7 @@ export class SinglefileComponent implements OnInit {
           maxFileSize: null,
           minFileSize: null,
           maxTotalFileSize: null,
-          maxNumberOfFiles: 1,
+          maxNumberOfFiles: this.numberOfFiles,
           minNumberOfFiles: null,
           allowedFileTypes: this.FileType
         },
@@ -111,9 +112,7 @@ export class SinglefileComponent implements OnInit {
 
     this.uppy.on('complete', (result) => {
       this.completed.emit(result);
-      console.log('successful files:', result.successful);
-      console.log('failed files:', result.failed);
-    })
+    });
 
   }
 }

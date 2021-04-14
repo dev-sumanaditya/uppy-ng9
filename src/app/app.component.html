@@ -1,1 +1,3 @@
-<app-singlefile [FileType]="['video/*']" [EndPoint]="'https://tusd.tusdemo.net/files/'"></app-singlefile>
+<app-singlefile [FileType]="['image/*', 'video/*']" [EndPoint]="'https://tusd.tusdemo.net/files/'" [numberOfFiles]="2"
+  [maxFileSize]="null" (completed)="completed($event)">
+</app-singlefile>

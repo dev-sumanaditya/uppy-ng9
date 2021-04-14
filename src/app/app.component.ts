@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'asyncupload';
+
+  public completed(e) {
+    console.log({e});
+  }
 }
